@@ -1,0 +1,119 @@
+export class GoldenChronologyEngine {
+
+    constructor() {
+        this.currentDay = 1;
+
+        this.solar = {
+            year: 1,
+            month: 1,
+            day: 1
+        };
+
+        this.lunar = {
+            year: 1,
+            month: 1,
+            day: 1
+        };
+
+        this.weekdays = [
+            "Friday",
+            "Saturday",
+            "Sunday",
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday"
+        ];
+    }
+
+
+    // إنشاء سجل يوم كامل
+    generateDay() {
+
+        const record = {
+
+            dayId: this.currentDay,
+
+            weekday: this.getWeekday(
+                this.currentDay
+            ),
+
+            solar: {
+                year: this.solar.year,
+                month: this.solar.month,
+                day: this.solar.day
+            },
+
+            lunar: {
+                year: this.lunar.year,
+                month: this.lunar.month,
+                day: this.lunar.day
+            }
+
+        };
+
+
+        this.nextDay();
+
+        return record;
+    }
+
+
+
+    // حساب يوم الأسبوع
+    getWeekday(dayId) {
+
+        return this.weekdays[
+            (dayId - 1) % 7
+        ];
+
+    }
+
+
+
+    // الانتقال إلى اليوم التالي
+    nextDay() {
+
+        this.currentDay++;
+
+        // النظام الشمسي المبسط
+        this.solar.day++;
+
+        if (this.solar.day > 30) {
+
+            this.solar.day = 1;
+            this.solar.month++;
+
+        }
+
+
+        if (this.solar.month > 12) {
+
+            this.solar.month = 1;
+            this.solar.year++;
+
+        }
+
+
+
+        // النظام القمري المبسط
+        this.lunar.day++;
+
+        if (this.lunar.day > 30) {
+
+            this.lunar.day = 1;
+            this.lunar.month++;
+
+        }
+
+
+        if (this.lunar.month > 12) {
+
+            this.lunar.month = 1;
+            this.lunar.year++;
+
+        }
+
+    }
+
+}

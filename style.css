@@ -1,0 +1,105 @@
+.official-footer {
+
+    margin-top:60px;
+    padding:40px 20px;
+
+    border-top:1px solid #b8860b;
+
+    text-align:center;
+
+    color:#d4af37;
+
+}
+
+
+
+.seal {
+
+    width:230px;
+    height:230px;
+
+    margin:auto;
+
+    border:3px double #d4af37;
+
+    border-radius:50%;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+
+
+.seal-title {
+
+    font-size:22px;
+
+    font-weight:bold;
+
+}
+
+
+
+.seal-subtitle {
+
+    font-size:12px;
+
+    margin-top:8px;
+
+}
+
+
+
+.seal-line {
+
+    width:120px;
+
+    border-top:1px solid #d4af37;
+
+    margin:15px;
+
+}
+
+
+
+.seal-text {
+
+    font-size:11px;
+
+}
+
+
+
+.signature {
+
+    margin-top:30px;
+
+}
+
+
+
+.signature h3 {
+
+    font-size:24px;
+
+    color:#fff;
+
+}
+
+
+
+.copyright {
+
+    margin-top:30px;
+
+    font-size:13px;
+
+    color:#aaa;
+
+}
