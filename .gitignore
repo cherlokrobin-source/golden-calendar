@@ -1,4 +1,10 @@
+archive/
+database/
 node_modules/
+storage/
+*.json
+*.csv
+*.txtnode_modules/
 
 database/
 

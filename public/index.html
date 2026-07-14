@@ -1,57 +1,150 @@
-<footer class="official-footer">
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
 
-    <div class="seal">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <div class="seal-title">
-            GOLDEN CALENDAR
-        </div>
+<title>الرزمانة الذهبية | Golden Calendar Engine</title>
 
-        <div class="seal-subtitle">
-            DIGITAL ASTROLABE ENGINE
-        </div>
+<link rel="stylesheet" href="style.css">
 
-        <div class="seal-line"></div>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700;900&display=swap" rel="stylesheet">
 
-        <div class="seal-text">
-            Official Research Project
-            <br>
-            Chronology & Calendar Computing
-        </div>
+</head>
 
-    </div>
+<body>
 
 
-    <div class="signature">
-
-        <p>
-        Developed by
-        </p>
-
-        <h3>
-        nemimeche benaissa
-        </h3>
-
-        <p>
-        Project Founder & Developer
-        </p>
-
-    </div>
+<div class="stars"></div>
 
 
-    <div class="copyright">
+<header>
 
-        © 2026 Golden Calendar Project
-        <br>
+<h1>✦ الرزمانة الذهبية ✦</h1>
 
-        All Rights Reserved
+<h2>
+THE GOLDEN CALENDAR ENGINE
+</h2>
 
-        <br><br>
+<p>
+Digital Astrolabe of Time
+</p>
 
-        This software architecture,
-        algorithms and documentation
-        are protected intellectual property.
+<div class="buttons">
 
-    </div>
+<button onclick="showSearch()">
+🔍 البحث عن يوم
+</button>
 
+<button>
+🌙 التحويل الشمسي والقمري
+</button>
+
+<button>
+⏳ المستكشف الزمني
+</button>
+
+</div>
+
+</header>
+
+
+
+<section class="stats">
+
+<div>
+<h3>50,000</h3>
+<p>سنة شمسية</p>
+</div>
+
+
+<div>
+<h3>51,555</h3>
+<p>سنة قمرية</p>
+</div>
+
+
+<div>
+<h3>18,250,000</h3>
+<p>يوم مؤرشف</p>
+</div>
+
+
+<div>
+<h3 id="status">
+🟢
+</h3>
+<p>حالة المحرك</p>
+</div>
+
+</section>
+
+
+
+
+<section id="searchBox" class="card">
+
+
+<h2>
+البحث الزمني
+</h2>
+
+
+<input 
+id="dayInput"
+type="number"
+placeholder="أدخل رقم اليوم">
+
+
+<button onclick="searchDay()">
+بحث
+</button>
+
+
+<pre id="result">
+</pre>
+
+
+</section>
+
+
+
+
+<section class="about">
+
+
+<h2>
+عن المشروع
+</h2>
+
+
+<p>
+الرزمانة الذهبية هي محرك زمني رقمي مستوحى من الأسطرلاب،
+يهدف إلى استكشاف التسلسل الزمني عبر 50 ألف سنة،
+مع مزامنة التقويم الشمسي والقمري.
+</p>
+
+
+</section>
+
+
+
+
+<footer>
+
+Developed by nemimeche benaissa
+
+<br>
+
+Golden Calendar Engine v1.0
 
 </footer>
+
+
+
+<script src="app.js"></script>
+
+</body>
+
+</html>
