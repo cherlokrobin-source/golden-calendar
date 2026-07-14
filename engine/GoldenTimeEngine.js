@@ -6,11 +6,24 @@ export class GoldenTimeEngine {
 
     constructor() {
 
-        this.archiveReader =
-            new DayArchiveReader();
+        this.archiveReader = null;
+
 
         this.status =
             "Golden Time Engine Ready";
+
+    }
+
+
+
+    init() {
+
+        if (!this.archiveReader) {
+
+            this.archiveReader =
+                new DayArchiveReader();
+
+        }
 
     }
 
@@ -43,6 +56,11 @@ export class GoldenTimeEngine {
         }
 
 
+
+        this.init();
+
+
+
         return this.archiveReader.getDay(dayId);
 
     }
@@ -51,6 +69,9 @@ export class GoldenTimeEngine {
 
 
     searchRange(startDay, endDay) {
+
+
+        this.init();
 
 
         const result = [];
@@ -65,6 +86,7 @@ export class GoldenTimeEngine {
 
             const item =
                 this.searchDay(day);
+
 
 
             if (item) {
