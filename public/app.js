@@ -1,28 +1,59 @@
-// Golden Calendar Engine Frontend v2
+// =====================================
+// Golden Calendar Engine
+// Frontend Controller v3
+// =====================================
+
 
 async function loadEngineStatus() {
 
     try {
 
-        const response = await fetch("/api");
+        const response =
+            await fetch("/api");
 
-        const data = await response.json();
+
+        const data =
+            await response.json();
+
+
+        const status =
+            document.getElementById("status");
+
 
         if (data.status === "online") {
 
-            document.getElementById("status").innerHTML = "🟢";
+            status.innerHTML = "🟢";
+
+        } else {
+
+            status.innerHTML = "🟡";
 
         }
 
+
     } catch(error) {
 
-        document.getElementById("status").innerHTML = "🔴";
 
-        console.error(error);
+        const status =
+            document.getElementById("status");
+
+
+        if(status){
+
+            status.innerHTML = "🔴";
+
+        }
+
+
+        console.error(
+            "Engine Error:",
+            error
+        );
 
     }
 
 }
+
 
 
 
@@ -31,102 +62,192 @@ function showSearch(){
     document
     .getElementById("searchBox")
     .scrollIntoView({
+
         behavior:"smooth"
+
     });
 
 }
 
 
 
+
+
 async function searchDay(){
 
+
+    const input =
+        document.getElementById("dayInput");
+
+
     const day =
-    document.getElementById("dayInput").value;
+        Number(input.value);
+
 
 
     const result =
-    document.getElementById("result");
+        document.getElementById("result");
 
 
-    if(!day){
+
+    if(!day || day <= 0){
+
 
         result.innerHTML =
-        "أدخل رقم اليوم";
+        "⚠️ أدخل رقم يوم صحيح";
+
 
         return;
 
     }
 
 
+
+
     result.innerHTML =
-    "⏳ جاري البحث في الأسطر الزمنية...";
+    "⏳ جاري البحث في المحرك الزمني...";
+
+
+
 
 
     try {
 
+
+
         const response =
-        await fetch(`/golden/day/${day}`);
+            await fetch(
+                `/golden/day/${day}`
+            );
+
 
 
         const data =
-        await response.json();
+            await response.json();
+
+
 
 
         if(data.error){
 
+
             result.innerHTML =
-            "❌ اليوم غير موجود";
+            "❌ لم يتم العثور على اليوم";
+
 
             return;
 
         }
 
 
+
+
+
+        // عرض التقويم الشمسي
+
+        document.getElementById(
+            "solarYear"
+        ).innerHTML =
+            data.solar.year;
+
+
+
+        document.getElementById(
+            "solarMonth"
+        ).innerHTML =
+            data.solar.monthName;
+
+
+
+        document.getElementById(
+            "solarDay"
+        ).innerHTML =
+            data.solar.day;
+
+
+
+
+
+        // عرض التقويم القمري
+
+        document.getElementById(
+            "lunarYear"
+        ).innerHTML =
+            data.lunar.year;
+
+
+
+        document.getElementById(
+            "lunarMonth"
+        ).innerHTML =
+            data.lunar.monthName;
+
+
+
+        document.getElementById(
+            "lunarDay"
+        ).innerHTML =
+            data.lunar.day;
+
+
+
+
+
+
+
         result.innerHTML = `
 
-☀ التقويم الشمسي
+📅 اليوم الأسبوعي:
 
-السنة: ${data.solar.year}
-
-الشهر: ${data.solar.monthName}
-
-اليوم: ${data.solar.day}
-
-
-
-🌙 التقويم القمري
-
-السنة: ${data.lunar.year}
-
-الشهر: ${data.lunar.monthName}
-
-اليوم: ${data.lunar.day}
-
-
-
-📅 اليوم:
-
+<strong>
 ${data.weekday}
+</strong>
 
 
-رقم اليوم:
+<br>
 
+
+🔢 رقم اليوم:
+
+<strong>
 ${data.dayId}
+</strong>
 
-        `;
+
+<br>
 
 
-    } catch(error){
+⚙️ حالة المحرك:
+
+Golden Calendar Engine
+
+`;
+
+
+
+    }
+
+    catch(error){
+
 
         result.innerHTML =
         "❌ تعذر الاتصال بالمحرك";
 
-        console.error(error);
+
+        console.error(
+            error
+        );
+
 
     }
+
 
 }
 
 
+
+
+
+// تشغيل عند فتح الصفحة
 
 loadEngineStatus();

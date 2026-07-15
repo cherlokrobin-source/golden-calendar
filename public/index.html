@@ -13,37 +13,53 @@
 
 </head>
 
+
 <body>
 
 
 <div class="stars"></div>
 
 
-<header>
+<header class="hero">
 
-<h1>✦ الرزمانة الذهبية ✦</h1>
+<div class="logo">
+    ✦
+</div>
+
+
+<h1>
+الرزمانة الذهبية
+</h1>
+
 
 <h2>
 THE GOLDEN CALENDAR ENGINE
 </h2>
 
+
 <p>
+الأسطرلاب الرقمي للزمن
+<br>
 Digital Astrolabe of Time
 </p>
+
 
 <div class="buttons">
 
 <button onclick="showSearch()">
-🔍 البحث عن يوم
+🔍 البحث الزمني
 </button>
 
-<button>
-🌙 التحويل الشمسي والقمري
-</button>
 
 <button>
-⏳ المستكشف الزمني
+☀️🌙 المحول التاريخي
 </button>
+
+
+<button>
+⏳ الخط الزمني
+</button>
+
 
 </div>
 
@@ -51,47 +67,51 @@ Digital Astrolabe of Time
 
 
 
+
 <section class="stats">
 
-<div>
+
+<div class="stat-card">
 <h3>50,000</h3>
 <p>سنة شمسية</p>
 </div>
 
 
-<div>
-<h3>51,555</h3>
-<p>سنة قمرية</p>
-</div>
-
-
-<div>
+<div class="stat-card">
 <h3>18,250,000</h3>
-<p>يوم مؤرشف</p>
+<p>يوم زمني</p>
 </div>
 
 
-<div>
+<div class="stat-card">
+<h3>∞</h3>
+<p>مدى الاستكشاف</p>
+</div>
+
+
+<div class="stat-card">
 <h3 id="status">
 🟢
 </h3>
 <p>حالة المحرك</p>
 </div>
 
+
 </section>
 
 
 
 
-<section id="searchBox" class="card">
+
+<section id="searchBox" class="panel">
 
 
 <h2>
-البحث الزمني
+🔎 البحث في الزمن
 </h2>
 
 
-<input 
+<input
 id="dayInput"
 type="number"
 placeholder="أدخل رقم اليوم">
@@ -102,11 +122,87 @@ placeholder="أدخل رقم اليوم">
 </button>
 
 
-<pre id="result">
-</pre>
+<div id="result" class="result">
+
+أدخل رقم اليوم لعرض التاريخ
+
+</div>
 
 
 </section>
+
+
+
+
+
+
+<section class="calendar">
+
+
+<div class="calendar-card solar">
+
+
+<h2>
+☀️ التقويم الشمسي
+</h2>
+
+
+<p>
+السنة:
+<span id="solarYear">-</span>
+</p>
+
+
+<p>
+الشهر:
+<span id="solarMonth">-</span>
+</p>
+
+
+<p>
+اليوم:
+<span id="solarDay">-</span>
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="calendar-card lunar">
+
+
+<h2>
+🌙 التقويم القمري
+</h2>
+
+
+<p>
+السنة:
+<span id="lunarYear">-</span>
+</p>
+
+
+<p>
+الشهر:
+<span id="lunarMonth">-</span>
+</p>
+
+
+<p>
+اليوم:
+<span id="lunarDay">-</span>
+</p>
+
+
+</div>
+
+
+</section>
+
+
 
 
 
@@ -120,9 +216,19 @@ placeholder="أدخل رقم اليوم">
 
 
 <p>
+
 الرزمانة الذهبية هي محرك زمني رقمي مستوحى من الأسطرلاب،
-يهدف إلى استكشاف التسلسل الزمني عبر 50 ألف سنة،
-مع مزامنة التقويم الشمسي والقمري.
+يهدف إلى دراسة وتسلسل الزمن عبر آلاف السنين،
+مع ربط التقويم الشمسي والقمري ضمن نظام حسابي واحد.
+
+</p>
+
+
+<p>
+
+Golden Calendar Engine is a digital chronology system
+designed to explore solar and lunar time synchronization.
+
 </p>
 
 
@@ -131,19 +237,29 @@ placeholder="أدخل رقم اليوم">
 
 
 
+
+
 <footer>
 
+
+<p>
 Developed by nemimeche benaissa
+</p>
 
-<br>
 
+<p>
 Golden Calendar Engine v1.0
+</p>
+
 
 </footer>
 
 
 
+
+
 <script src="app.js"></script>
+
 
 </body>
 
