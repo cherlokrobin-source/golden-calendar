@@ -320,3 +320,35 @@ footer {
 
 
 }
+/* =========================
+   Golden Calendar Results
+========================= */
+
+#result {
+
+    margin-top:25px;
+
+    padding:20px;
+
+    border-radius:20px;
+
+    background:rgba(0,0,0,0.45);
+
+    border:1px solid #b8860b;
+
+    color:#fff;
+
+    font-size:16px;
+
+    line-height:2;
+
+    direction:ltr;
+
+}
+
+
+#result::first-line {
+
+    color:#ffd700;
+
+}

@@ -27,6 +27,13 @@ import { BatchArchiveEngine } from "./src/archive/BatchArchiveEngine.js";
 
 
 // ============================
+// ⏳ GOLDEN TIME ENGINE
+// ============================
+
+import { GoldenTimeEngine } from "./engine/GoldenTimeEngine.js";
+
+
+// ============================
 // 🚀 APP
 // ============================
 
@@ -42,6 +49,15 @@ app.use(express.json());
 // ============================
 
 app.use(express.static("public"));
+
+
+// ============================
+// ⏳ GOLDEN ENGINE INIT
+// ============================
+
+const goldenEngine = new GoldenTimeEngine();
+
+goldenEngine.init();
 
 
 // ============================
@@ -183,25 +199,49 @@ app.get("/api",(req,res)=>{
 
 res.json({
 
-name:
-"Golden Calendar Engine",
+name:"Golden Calendar Engine",
 
-title:
-"الرزمانة الذهبية",
+title:"الرزمانة الذهبية",
 
-version:
-"1.0",
+version:"1.0",
 
-range:
-"1 - 50000 years",
+range:"1 - 50000 years",
 
-core:
-"Chronology OS v10",
+core:"Chronology OS v10",
 
-status:
-"online"
+status:"online"
 
 });
+
+});
+
+
+// ============================
+// 🌟 GOLDEN DETAILED API
+// ============================
+
+app.get("/golden/day/:n",(req,res)=>{
+
+const dayId =
+Number(req.params.n);
+
+
+const result =
+goldenEngine.searchDay(dayId);
+
+
+if(!result){
+
+return res.status(404).json({
+
+error:"Day not found"
+
+});
+
+}
+
+
+res.json(result);
 
 });
 
@@ -209,7 +249,6 @@ status:
 // ============================
 // 📅 TIME ROUTES
 // ============================
-
 
 app.get("/day/:n",(req,res)=>{
 
@@ -225,26 +264,21 @@ Number(req.params.n)
 });
 
 
-
 app.get("/range/:s/:e",(req,res)=>{
 
 res.json(
 
 planner.plan(
-
 "range",
-
 [
 Number(req.params.s),
 Number(req.params.e)
 ]
-
 )
 
 );
 
 });
-
 
 
 app.get("/year/:y",(req,res)=>{
@@ -259,7 +293,6 @@ Number(req.params.y)
 );
 
 });
-
 
 
 // ============================
@@ -284,7 +317,6 @@ Number(req.params.d)
 // 📦 BATCH
 // ============================
 
-
 app.get("/batch/run",(req,res)=>{
 
 const target =
@@ -305,7 +337,6 @@ chunk
 );
 
 });
-
 
 
 app.get("/batch/status",(req,res)=>{
@@ -347,8 +378,7 @@ console.error(err);
 
 res.status(500).json({
 
-error:
-"Internal Server Error"
+error:"Internal Server Error"
 
 });
 
@@ -362,9 +392,7 @@ error:
 app.listen(PORT,()=>{
 
 console.log(
-
 "🚀 Golden Calendar Engine + Chronology OS v10 running at http://localhost:"+PORT
-
 );
 
 });
