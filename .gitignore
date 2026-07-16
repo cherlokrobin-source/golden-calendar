@@ -2,12 +2,26 @@ archive/
 database/
 node_modules/
 storage/
+
 *.json
 *.csv
-*.txtnode_modules/
-
-database/
+*.txt
 
 *.log
 
 .env
+
+# Backup files
+*.backup
+*.before_*
+*.dashboard_backup
+*.identity_done
+*.step1.*
+
+# Development scripts
+add_*.py
+edit_html.py
+update_dashboard_live.py
+
+# Backup folders
+backups/
