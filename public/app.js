@@ -251,3 +251,97 @@ Golden Calendar Engine
 // تشغيل عند فتح الصفحة
 
 loadEngineStatus();
+
+
+// =====================================
+// Dashboard Live Monitor
+// =====================================
+
+async function loadDashboardStatus(){
+
+    try{
+
+        const api =
+        await fetch("/api");
+
+        const engine =
+        await api.json();
+
+
+        const guardianResponse =
+        await fetch("/guardian/status");
+
+
+        const guardian =
+        await guardianResponse.json();
+
+
+        const engineBox =
+        document.getElementById("engineStatus");
+
+        const guardianBox =
+        document.getElementById("guardianStatus");
+
+
+        const syncBox =
+        document.getElementById("syncStatus");
+
+
+        const rangeBox =
+        document.getElementById("rangeStatus");
+
+
+        if(engineBox){
+
+            engineBox.innerHTML =
+            engine.status === "online"
+            ? "ONLINE 🟢"
+            : "OFFLINE 🔴";
+
+        }
+
+
+        if(guardianBox){
+
+            guardianBox.innerHTML =
+            guardian.status === "active"
+            ? "ACTIVE 🛡️"
+            : "STOPPED";
+
+        }
+
+
+        if(syncBox){
+
+            syncBox.innerHTML =
+            "SOLAR + LUNAR ☀️🌙";
+
+        }
+
+
+        if(rangeBox){
+
+            rangeBox.innerHTML =
+            engine.range;
+
+        }
+
+
+    }
+
+    catch(error){
+
+        console.error(
+            "Dashboard Error:",
+            error
+        );
+
+    }
+
+}
+
+
+// تشغيل لوحة التحكم
+
+loadDashboardStatus();
+

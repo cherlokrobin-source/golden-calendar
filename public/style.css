@@ -478,3 +478,233 @@ input {
 
 
 }
+
+
+/* =====================================
+   Golden Identity Section
+===================================== */
+
+
+.basmala {
+
+    font-size: 42px !important;
+    color: #ffd700;
+    text-shadow:
+    0 0 15px #ffd700;
+
+    margin-bottom: 15px;
+
+}
+
+
+
+.verse {
+
+    max-width: 900px;
+    margin: auto;
+
+    color: #fff2b0;
+
+    font-size: 22px !important;
+
+    line-height: 2.2;
+
+    text-shadow:
+    0 0 10px #8b6508;
+
+}
+
+
+
+.verse-ref {
+
+    color: #d4af37;
+
+    font-size: 16px !important;
+
+    margin-top: -15px;
+
+}
+
+
+
+.slogan {
+
+    color: #ffd700;
+
+    font-weight: bold;
+
+    letter-spacing: 2px;
+
+}
+
+
+
+.official-seal {
+
+    width: 150px;
+
+    height: 150px;
+
+    margin: 30px auto;
+
+    border: 2px solid #ffd700;
+
+    border-radius: 50%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    flex-direction:column;
+
+    color:#ffd700;
+
+    font-size:14px;
+
+    box-shadow:
+
+    0 0 25px #b8860b;
+
+    background:
+    radial-gradient(circle,#3b2b08,#050505);
+
+}
+
+
+
+/* =====================================
+   GOLDEN DASHBOARD
+===================================== */
+
+
+.dashboard {
+
+    margin: 50px auto;
+
+    padding: 30px 20px;
+
+    max-width: 1200px;
+
+}
+
+
+
+.dashboard h2 {
+
+    color: #ffd700;
+
+    font-size: 32px;
+
+    margin-bottom: 30px;
+
+    text-shadow:
+    0 0 15px #b8860b;
+
+}
+
+
+
+.dashboard-grid {
+
+    display: grid;
+
+    grid-template-columns:
+    repeat(auto-fit, minmax(220px, 1fr));
+
+    gap: 25px;
+
+}
+
+
+
+.dashboard-card {
+
+    background:
+    linear-gradient(
+    145deg,
+    rgba(255,215,0,.15),
+    rgba(0,0,0,.7)
+    );
+
+
+    border: 1px solid #d4af37;
+
+    border-radius: 20px;
+
+    padding: 25px;
+
+    min-height: 170px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+
+    box-shadow:
+
+    0 0 20px rgba(255,215,0,.25);
+
+
+    backdrop-filter: blur(8px);
+
+
+    transition: .3s;
+
+}
+
+
+
+.dashboard-card:hover {
+
+    transform: translateY(-8px);
+
+    box-shadow:
+
+    0 0 35px rgba(255,215,0,.6);
+
+}
+
+
+
+.dashboard-card h3 {
+
+    color:#ffd700;
+
+    font-size:24px;
+
+    margin-bottom:15px;
+
+}
+
+
+
+.dashboard-card p {
+
+    color:white;
+
+    font-size:18px;
+
+}
+
+
+
+.dashboard-card span {
+
+    margin-top:15px;
+
+    color:#00ff88;
+
+    font-weight:bold;
+
+    letter-spacing:2px;
+
+}
+
+
