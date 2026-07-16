@@ -247,8 +247,16 @@ const dayId =
 Number(req.params.n);
 
 
+const startTime =
+guardian.performance.start();
+
 const result =
 goldenEngine.searchDay(dayId);
+
+guardian.performance.end(
+    startTime,
+    "golden/day/" + dayId
+);
 
 
 if(!result){
