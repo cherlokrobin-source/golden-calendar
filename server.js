@@ -34,6 +34,13 @@ import { GoldenTimeEngine } from "./engine/GoldenTimeEngine.js";
 
 
 // ============================
+// 🛡️ GUARDIAN SYSTEM
+// ============================
+
+import { GuardianSystem } from "./monitor/GuardianSystem.js";
+
+
+// ============================
 // 🚀 APP
 // ============================
 
@@ -55,20 +62,36 @@ app.use(express.static("public"));
 // ⏳ GOLDEN ENGINE INIT
 // ============================
 
-const goldenEngine = new GoldenTimeEngine();
+const goldenEngine =
+    new GoldenTimeEngine();
 
 goldenEngine.init();
+
+
+// ============================
+// 🛡️ START GUARDIAN
+// ============================
+
+const guardian =
+    new GuardianSystem();
+
+guardian.start();
 
 
 // ============================
 // ⚙️ BASIC ENGINES
 // ============================
 
-const week = new WeekEngine();
+const week =
+    new WeekEngine();
 
-const solar = new SolarEngine();
 
-const lunar = new LunarEngine();
+const solar =
+    new SolarEngine();
+
+
+const lunar =
+    new LunarEngine();
 
 
 // ============================
@@ -177,18 +200,16 @@ chrono,
 indexEngine
 
 );
-
-
 // ============================
 // 📦 BATCH ENGINE
 // ============================
 
 const batchEngine =
-new BatchArchiveEngine(
-week,
-solar,
-lunar
-);
+    new BatchArchiveEngine(
+        week,
+        solar,
+        lunar
+    );
 
 
 // ============================
@@ -349,6 +370,58 @@ batchEngine.status()
 
 
 // ============================
+// 🛡️ GUARDIAN API
+// ============================
+
+app.get("/guardian/status",(req,res)=>{
+
+res.json({
+
+system:"GuardianSystem",
+
+status:
+guardian.running
+?
+"active"
+:
+"stopped",
+
+startedAt:
+guardian.startedAt
+
+});
+
+});
+
+
+app.get("/guardian/report",(req,res)=>{
+
+res.json(
+guardian.report()
+);
+
+});
+
+
+app.get("/guardian/health",(req,res)=>{
+
+res.json(
+guardian.health.check()
+);
+
+});
+
+
+app.get("/guardian/performance",(req,res)=>{
+
+res.json(
+guardian.performance.report()
+);
+
+});
+
+
+// ============================
 // 🔄 MODE
 // ============================
 
@@ -361,7 +434,9 @@ mode=req.params.m;
 
 
 res.json({
+
 mode
+
 });
 
 });
@@ -392,7 +467,7 @@ error:"Internal Server Error"
 app.listen(PORT,()=>{
 
 console.log(
-"🚀 Golden Calendar Engine + Chronology OS v10 running at http://localhost:"+PORT
+"🚀 Golden Calendar Engine + Chronology OS v10 + Guardian running at http://localhost:"+PORT
 );
 
 });
