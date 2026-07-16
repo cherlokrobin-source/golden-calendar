@@ -708,3 +708,79 @@ input {
 }
 
 
+
+
+/* =====================================
+   Digital Astrolabe Animation
+===================================== */
+
+.digital-astrolabe {
+
+    width: 180px;
+    height: 180px;
+
+    margin: 35px auto;
+
+    border: 2px solid #d4af37;
+    border-radius: 50%;
+
+    position: relative;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    box-shadow:
+    0 0 30px rgba(255,215,0,.5);
+
+    animation:
+    rotateAstrolabe 20s linear infinite;
+
+}
+
+
+.digital-astrolabe .sun {
+
+    position:absolute;
+
+    top:10px;
+
+    font-size:45px;
+
+    color:#ffd700;
+
+}
+
+
+.digital-astrolabe .orbit {
+
+    position:absolute;
+
+    bottom:15px;
+
+    font-size:40px;
+
+}
+
+
+.digital-astrolabe .center {
+
+    font-size:45px;
+
+    color:#fff2b0;
+
+}
+
+
+@keyframes rotateAstrolabe {
+
+    from {
+        transform:rotate(0deg);
+    }
+
+    to {
+        transform:rotate(360deg);
+    }
+
+}
+
