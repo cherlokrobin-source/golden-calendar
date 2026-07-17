@@ -178,6 +178,14 @@ end
 
 }
 
+    ,
+
+    simulateYear(year){
+
+        return this.getYear(year);
+
+    }
+
 
 },
 
@@ -458,14 +466,16 @@ app.use((err,req,res,next)=>{
 
 console.error(err);
 
-
 res.status(500).json({
 
-error:"Internal Server Error"
+error: err.message,
+stack: err.stack
 
 });
 
 });
+
+
 
 
 // ============================
