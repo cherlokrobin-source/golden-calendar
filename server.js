@@ -140,25 +140,36 @@ mode:
 
 getRange(start,end){
 
-const result=[];
+    const result=[];
 
+    for(
+        let i=start;
+        i<=end;
+        i++
+    ){
 
-for(
-let i=start;
-i<=end;
-i++
-){
+        result.push({
 
-result.push(
-this.getDay(i)
-);
+            dayNumber:i,
 
-}
+            weekday:
+                week.calc(i - 1),
 
+            solar:
+                solar.calc(i - 1),
 
-return result;
+            lunar:
+                lunar.calc(i - 1),
 
+            mode:"v10"
+
+        });
+
+    }
+
+    return result;
 },
+
 
 
 getYear(year){
@@ -303,17 +314,25 @@ Number(req.params.n)
 
 app.get("/range/:s/:e",(req,res)=>{
 
-res.json(
+const start = Number(req.params.s);
+const end = Number(req.params.e);
 
-planner.plan(
-"range",
-[
-Number(req.params.s),
-Number(req.params.e)
-]
-)
+const result = [];
 
-);
+for(let day = start; day <= end; day++){
+
+    const item =
+        goldenEngine.searchDay(day);
+
+    console.log("RANGE DAY:", day, item);
+
+    if(item){
+        result.push(item);
+    }
+
+}
+
+res.json(result);
 
 });
 
