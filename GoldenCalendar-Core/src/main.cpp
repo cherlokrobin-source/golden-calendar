@@ -1,51 +1,51 @@
 #include <iostream>
 
-#include "../include/SolarEngine.h"
-
-void printDate(long long dayId)
-{
-    SolarDate date = SolarEngine::getDate(dayId);
-
-    std::cout
-    << "Day "
-    << dayId
-    << " = "
-    << date.day
-    << " "
-    << date.monthName
-    << " "
-    << date.year
-    << "\n";
-}
+#include "../include/ChronologyEngine.h"
 
 
 int main()
 {
 
-    long long feb28 =
-        SolarEngine::toDayId(4,2,28);
-
-    long long feb29 =
-        SolarEngine::toDayId(4,2,29);
-
-    long long march1 =
-        SolarEngine::toDayId(4,3,1);
+    ChronologyEngine engine;
 
 
-    printDate(feb28);
-    printDate(feb29);
-    printDate(march1);
+    long long tests[] =
+    {
+        1,
+        32,
+        366,
+        1155
+    };
 
 
-    long long endYear =
-        SolarEngine::toDayId(4,12,31);
+    for(long long id : tests)
+    {
 
-    long long nextYear =
-        SolarEngine::toDayId(5,1,1);
+        CalendarDay day =
+            engine.getDay(id);
 
 
-    printDate(endYear);
-    printDate(nextYear);
+        std::cout
+        << "Day ID: "
+        << day.dayId
+        << "\n";
+
+
+        std::cout
+        << "Weekday: "
+        << day.weekday
+        << "\n";
+
+
+        std::cout
+        << "Solar: "
+        << day.solar.day
+        << " "
+        << day.solar.monthName
+        << " "
+        << day.solar.year
+        << "\n\n";
+    }
 
 
     return 0;
