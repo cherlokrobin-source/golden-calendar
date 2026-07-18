@@ -2,35 +2,50 @@
 
 #include "../include/SolarEngine.h"
 
+void printDate(long long dayId)
+{
+    SolarDate date = SolarEngine::getDate(dayId);
+
+    std::cout
+    << "Day "
+    << dayId
+    << " = "
+    << date.day
+    << " "
+    << date.monthName
+    << " "
+    << date.year
+    << "\n";
+}
+
+
 int main()
 {
 
-    long long years[] =
-    {
-        4,
-        100,
-        400
-    };
+    long long feb28 =
+        SolarEngine::toDayId(4,2,28);
+
+    long long feb29 =
+        SolarEngine::toDayId(4,2,29);
+
+    long long march1 =
+        SolarEngine::toDayId(4,3,1);
 
 
-    for(long long year : years)
-    {
+    printDate(feb28);
+    printDate(feb29);
+    printDate(march1);
 
-        std::cout
-        << "Year "
-        << year
-        << " : ";
 
-        if(SolarEngine::isLeapYear(year))
-            std::cout << "Leap";
-        else
-            std::cout << "Normal";
+    long long endYear =
+        SolarEngine::toDayId(4,12,31);
 
-        std::cout
-        << " - Days: "
-        << SolarEngine::daysInYear(year)
-        << "\n";
-    }
+    long long nextYear =
+        SolarEngine::toDayId(5,1,1);
+
+
+    printDate(endYear);
+    printDate(nextYear);
 
 
     return 0;
