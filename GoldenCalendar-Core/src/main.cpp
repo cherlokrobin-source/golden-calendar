@@ -26,7 +26,8 @@ int main()
     std::cout
         << "Weekday: "
         << day.weekday
-        << "\n";
+        << "\n\n";
+
 
 
     std::cout
@@ -39,8 +40,20 @@ int main()
         << "\n";
 
 
+
     std::cout
-        << "\nEpoch Years: "
+        << "Lunar: "
+        << day.lunar.day
+        << " "
+        << day.lunar.monthName
+        << " "
+        << day.lunar.year
+        << "\n\n";
+
+
+
+    std::cout
+        << "Epoch Years: "
         << day.epochStartYear
         << " - "
         << day.epochEndYear

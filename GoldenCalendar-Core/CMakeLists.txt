@@ -28,5 +28,6 @@ add_executable(
 
     src/DayEngine.cpp
 
+    src/LunarEngine.cpp
     src/SolarEngine.cpp
 )

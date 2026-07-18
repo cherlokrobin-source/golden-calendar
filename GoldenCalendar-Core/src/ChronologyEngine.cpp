@@ -2,7 +2,9 @@
 #include "../include/Epoch.h"
 #include "../include/DayEngine.h"
 #include "../include/SolarEngine.h"
+#include "../include/LunarEngine.h"
 #include "../include/EpochGenerator.h"
+
 
 
 ChronologyEngine::ChronologyEngine()
@@ -15,38 +17,58 @@ ChronologyEngine::ChronologyEngine()
 }
 
 
+
+
 EpochSegment ChronologyEngine::findEpoch(long long dayId)
 {
+
     for(auto &epoch : epochs)
     {
+
         if(dayId >= epoch.startDayId &&
            dayId <= epoch.endDayId)
         {
             return epoch;
         }
+
     }
 
+
     return epochs.back();
+
 }
+
+
 
 
 CalendarDay ChronologyEngine::getDay(long long dayId)
 {
+
     EpochSegment epoch =
         findEpoch(dayId);
 
 
+
     CalendarDay day;
 
+
     day.dayId = dayId;
+
 
 
     day.weekday =
         DayEngine::getWeekday(dayId);
 
 
+
     day.solar =
         SolarEngine::getDate(dayId);
+
+
+
+    day.lunar =
+        LunarEngine::getDate(dayId);
+
 
 
     day.epochStartYear =
@@ -65,5 +87,7 @@ CalendarDay ChronologyEngine::getDay(long long dayId)
         epoch.endDayId;
 
 
+
     return day;
+
 }
