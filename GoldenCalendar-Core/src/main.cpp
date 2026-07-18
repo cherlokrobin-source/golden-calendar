@@ -1,40 +1,43 @@
 #include <iostream>
-
-#include "../include/EpochManager.h"
-
+#include "../include/EpochGenerator.h"
 
 int main()
 {
 
-    EpochSegment epoch =
-        EpochManager::createEpoch(
-            1,
+    auto epochs =
+        EpochGenerator::generate(
+            50000,
             2083
         );
 
 
-    std::cout
-    << "Epoch Start Year: "
-    << epoch.startYear
-    << "\n";
+    int index = 1;
 
 
-    std::cout
-    << "Epoch End Year: "
-    << epoch.endYear
-    << "\n";
+    for(auto &epoch : epochs)
+    {
+
+        std::cout
+        << "Epoch "
+        << index++
+        << "\n";
 
 
-    std::cout
-    << "Start Day ID: "
-    << epoch.startDayId
-    << "\n";
+        std::cout
+        << "Years: "
+        << epoch.startYear
+        << " - "
+        << epoch.endYear
+        << "\n";
 
 
-    std::cout
-    << "End Day ID: "
-    << epoch.endDayId
-    << "\n";
+        std::cout
+        << "Days: "
+        << epoch.startDayId
+        << " - "
+        << epoch.endDayId
+        << "\n\n";
+    }
 
 
     return 0;

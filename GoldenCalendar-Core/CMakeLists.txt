@@ -16,4 +16,5 @@ add_executable(
     src/ChronologyEngine.cpp
     src/DayEngine.cpp
     src/SolarEngine.cpp
+    src/EpochGenerator.cpp
 )
