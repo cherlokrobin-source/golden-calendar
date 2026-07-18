@@ -2,3 +2,17 @@ build/
 GoldenCalendar-Core/build/
 *.o
 *.obj
+
+# Local generated data
+data/
+database/
+archive/
+archive_backups/
+backups/
+storage/
+logs/
+node_modules/
+
+# Temporary backups
+*.bak
+*.before*
