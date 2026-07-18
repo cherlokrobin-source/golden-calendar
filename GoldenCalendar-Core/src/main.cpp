@@ -1,48 +1,39 @@
 #include <iostream>
 
-#include "../include/ChronologyEngine.h"
-#include "../include/SolarEngine.h"
+#include "../include/EpochManager.h"
 
 
 int main()
 {
 
-    long long dayId =
-        SolarEngine::toDayId(2083,12,31);
+    EpochSegment epoch =
+        EpochManager::createEpoch(
+            1,
+            2083
+        );
 
 
     std::cout
-    << "Day ID for 31 December 2083: "
-    << dayId
-    << "\n\n";
-
-
-    ChronologyEngine engine;
-
-
-    CalendarDay day =
-        engine.getDay(dayId);
-
-
-    std::cout
-    << "Day ID: "
-    << day.dayId
+    << "Epoch Start Year: "
+    << epoch.startYear
     << "\n";
 
 
     std::cout
-    << "Weekday: "
-    << day.weekday
+    << "Epoch End Year: "
+    << epoch.endYear
     << "\n";
 
 
     std::cout
-    << "Solar: "
-    << day.solar.day
-    << " "
-    << day.solar.monthName
-    << " "
-    << day.solar.year
+    << "Start Day ID: "
+    << epoch.startDayId
+    << "\n";
+
+
+    std::cout
+    << "End Day ID: "
+    << epoch.endDayId
     << "\n";
 
 

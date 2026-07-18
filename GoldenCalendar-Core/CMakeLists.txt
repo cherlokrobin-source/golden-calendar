@@ -11,6 +11,8 @@ add_executable(
 
     src/main.cpp
     src/Epoch.cpp
+    src/EpochSegment.cpp
+    src/EpochManager.cpp
     src/ChronologyEngine.cpp
     src/DayEngine.cpp
     src/SolarEngine.cpp
