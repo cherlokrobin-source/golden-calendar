@@ -300,14 +300,23 @@ res.json(result);
 
 app.get("/day/:n",(req,res)=>{
 
-res.json(
+const dayId =
+Number(req.params.n);
 
-planner.plan(
-"day",
-Number(req.params.n)
-)
+const result =
+goldenEngine.searchDay(dayId);
 
-);
+if(!result){
+
+return res.status(404).json({
+
+error:"Day not found"
+
+});
+
+}
+
+res.json(result);
 
 });
 
