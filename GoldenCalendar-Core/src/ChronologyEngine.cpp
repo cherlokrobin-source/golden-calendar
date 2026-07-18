@@ -15,12 +15,26 @@ ChronologyEngine::ChronologyEngine()
 }
 
 
+EpochSegment ChronologyEngine::findEpoch(long long dayId)
+{
+    for(auto &epoch : epochs)
+    {
+        if(dayId >= epoch.startDayId &&
+           dayId <= epoch.endDayId)
+        {
+            return epoch;
+        }
+    }
+
+    return epochs.back();
+}
+
+
 CalendarDay ChronologyEngine::getDay(long long dayId)
 {
-    if(dayId == 1)
-    {
-        return Epoch::firstDay();
-    }
+    EpochSegment epoch =
+        findEpoch(dayId);
+
 
     CalendarDay day;
 
@@ -31,6 +45,7 @@ CalendarDay ChronologyEngine::getDay(long long dayId)
 
     day.solar =
         SolarEngine::getDate(dayId);
+
 
     return day;
 }

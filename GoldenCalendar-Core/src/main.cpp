@@ -1,43 +1,40 @@
 #include <iostream>
-#include "../include/EpochGenerator.h"
+#include "../include/ChronologyEngine.h"
+
 
 int main()
 {
 
-    auto epochs =
-        EpochGenerator::generate(
-            50000,
-            2083
-        );
+    ChronologyEngine engine;
 
 
-    int index = 1;
+    long long testDay = 10000000;
 
 
-    for(auto &epoch : epochs)
-    {
-
-        std::cout
-        << "Epoch "
-        << index++
-        << "\n";
+    CalendarDay day =
+        engine.getDay(testDay);
 
 
-        std::cout
-        << "Years: "
-        << epoch.startYear
-        << " - "
-        << epoch.endYear
-        << "\n";
+    std::cout
+    << "Day ID: "
+    << day.dayId
+    << "\n";
 
 
-        std::cout
-        << "Days: "
-        << epoch.startDayId
-        << " - "
-        << epoch.endDayId
-        << "\n\n";
-    }
+    std::cout
+    << "Weekday: "
+    << day.weekday
+    << "\n";
+
+
+    std::cout
+    << "Solar: "
+    << day.solar.day
+    << " "
+    << day.solar.monthName
+    << " "
+    << day.solar.year
+    << "\n";
 
 
     return 0;

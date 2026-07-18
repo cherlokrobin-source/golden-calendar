@@ -5,19 +5,26 @@
 #include "EpochSegment.h"
 #include <vector>
 
-class ChronologyEngine {
+
+class ChronologyEngine
+{
 
 private:
 
     std::vector<EpochSegment> epochs;
 
 
+    EpochSegment findEpoch(long long dayId);
+
+
 public:
 
     ChronologyEngine();
 
+
     CalendarDay getDay(long long dayId);
 
 };
+
 
 #endif
