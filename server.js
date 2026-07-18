@@ -1,3 +1,4 @@
+import fs from "fs";
 import express from "express";
 
 // ============================
@@ -348,14 +349,79 @@ res.json(result);
 
 app.get("/year/:y",(req,res)=>{
 
-res.json(
+const year =
+Number(req.params.y);
 
-planner.plan(
-"year",
-Number(req.params.y)
-)
 
+
+const filePath =
+"./database/archive/years/year_" +
+String(year).padStart(5,"0") +
+".json";
+
+
+if(!fs.existsSync(filePath)){
+
+return res.status(404).json({
+
+error:"Year not found"
+
+});
+
+}
+
+
+const data =
+JSON.parse(
+fs.readFileSync(filePath,"utf8")
 );
+
+
+const result=[];
+
+let dayId =
+(year - 1) * 365 + 1;
+
+
+for(const month of data.months){
+
+    for(const day of month.days){
+
+        result.push({
+
+            dayId,
+
+            weekday:
+                day.weekday,
+
+            solar:{
+
+                year:data.year,
+
+                month:
+                    month.number,
+
+                monthName:
+                    month.name,
+
+                day:
+                    day.day
+
+            },
+
+            lunar:
+                day.lunar
+
+        });
+
+        dayId++;
+
+    }
+
+}
+
+
+res.json(result);
 
 });
 
