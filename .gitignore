@@ -16,3 +16,7 @@ node_modules/
 # Temporary backups
 *.bak
 *.before*
+
+# Temporary project files
+add_fs_import.py
+*.identity_done
