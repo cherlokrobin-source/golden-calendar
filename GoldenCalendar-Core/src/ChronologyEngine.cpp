@@ -40,11 +40,29 @@ CalendarDay ChronologyEngine::getDay(long long dayId)
 
     day.dayId = dayId;
 
+
     day.weekday =
         DayEngine::getWeekday(dayId);
 
+
     day.solar =
         SolarEngine::getDate(dayId);
+
+
+    day.epochStartYear =
+        epoch.startYear;
+
+
+    day.epochEndYear =
+        epoch.endYear;
+
+
+    day.epochStartDayId =
+        epoch.startDayId;
+
+
+    day.epochEndDayId =
+        epoch.endDayId;
 
 
     return day;

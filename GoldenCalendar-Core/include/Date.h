@@ -3,25 +3,44 @@
 
 #include <string>
 
-struct SolarDate {
+
+struct SolarDate
+{
     int year;
     int month;
     int day;
     std::string monthName;
 };
 
-struct LunarDate {
+
+struct LunarDate
+{
     int year;
     int month;
     int day;
     std::string monthName;
 };
 
-struct CalendarDay {
+
+struct CalendarDay
+{
     long long dayId;
+
     std::string weekday;
+
     SolarDate solar;
+
     LunarDate lunar;
+
+
+    long long epochStartYear;
+
+    long long epochEndYear;
+
+    long long epochStartDayId;
+
+    long long epochEndDayId;
 };
+
 
 #endif
