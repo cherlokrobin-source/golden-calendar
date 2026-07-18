@@ -5,31 +5,30 @@
 int main()
 {
 
-    long long tests[] =
+    long long years[] =
     {
-        1,
-        32,
-        365,
-        366
+        4,
+        100,
+        400
     };
 
 
-    for(long long dayId : tests)
+    for(long long year : years)
     {
 
-        SolarDate date =
-            SolarEngine::getDate(dayId);
+        std::cout
+        << "Year "
+        << year
+        << " : ";
 
+        if(SolarEngine::isLeapYear(year))
+            std::cout << "Leap";
+        else
+            std::cout << "Normal";
 
         std::cout
-        << "Day "
-        << dayId
-        << " = "
-        << date.day
-        << " "
-        << date.monthName
-        << " "
-        << date.year
+        << " - Days: "
+        << SolarEngine::daysInYear(year)
         << "\n";
     }
 
