@@ -38,10 +38,48 @@ SolarDate SolarEngine::getDate(long long dayId)
 {
     SolarDate date;
 
-    date.year = 1;
-    date.month = 1;
-    date.day = 1;
-    date.monthName = "يناير";
+    long long remaining = dayId;
+
+    long long year = 1;
+
+    while(remaining > daysInYear(year))
+    {
+        remaining -= daysInYear(year);
+        year++;
+    }
+
+
+    int month = 1;
+
+    while(remaining > daysInMonth(year, month))
+    {
+        remaining -= daysInMonth(year, month);
+        month++;
+    }
+
+
+    const char* months[] =
+    {
+        "يناير",
+        "فبراير",
+        "مارس",
+        "أبريل",
+        "مايو",
+        "يونيو",
+        "يوليو",
+        "أغسطس",
+        "سبتمبر",
+        "أكتوبر",
+        "نوفمبر",
+        "ديسمبر"
+    };
+
+
+    date.year = year;
+    date.month = month;
+    date.day = remaining;
+    date.monthName = months[month - 1];
+
 
     return date;
 }
