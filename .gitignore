@@ -1,27 +1,4 @@
-archive/
-database/
-node_modules/
-storage/
-
-*.json
-*.csv
-*.txt
-
-*.log
-
-.env
-
-# Backup files
-*.backup
-*.before_*
-*.dashboard_backup
-*.identity_done
-*.step1.*
-
-# Development scripts
-add_*.py
-edit_html.py
-update_dashboard_live.py
-
-# Backup folders
-backups/
+build/
+GoldenCalendar-Core/build/
+*.o
+*.obj

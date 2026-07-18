@@ -1,50 +1,78 @@
 #include "../include/SolarEngine.h"
 
-SolarDate SolarEngine::getDate(long long dayId)
+
+bool SolarEngine::isLeapYear(long long year)
 {
+    if(year % 400 == 0)
+        return true;
 
-    SolarDate date;
+    if(year % 100 == 0)
+        return false;
 
-    date.year = 1;
+    return (year % 4 == 0);
+}
 
-    const char* months[] = {
-        "يناير",
-        "فبراير",
-        "مارس",
-        "أبريل",
-        "مايو",
-        "يونيو",
-        "يوليو",
-        "أغسطس",
-        "سبتمبر",
-        "أكتوبر",
-        "نوفمبر",
-        "ديسمبر"
-    };
 
-    int daysInMonth[] = {
+int SolarEngine::daysInYear(long long year)
+{
+    return isLeapYear(year) ? 366 : 365;
+}
+
+
+int SolarEngine::daysInMonth(long long year, int month)
+{
+    const int days[] =
+    {
         31,28,31,30,31,30,
         31,31,30,31,30,31
     };
 
+    if(month == 2 && isLeapYear(year))
+        return 29;
 
-    long long remaining = dayId;
+    return days[month - 1];
+}
 
-    int month = 1;
+
+SolarDate SolarEngine::getDate(long long dayId)
+{
+    SolarDate date;
+
+    date.year = 1;
+    date.month = 1;
+    date.day = 1;
+    date.monthName = "يناير";
+
+    return date;
+}
 
 
-    while(remaining > daysInMonth[month-1])
+long long SolarEngine::toDayId(
+    long long year,
+    int month,
+    int day)
+{
+
+    long long total = 0;
+
+
+    // حساب أيام السنوات السابقة
+    for(long long y = 1; y < year; y++)
     {
-        remaining -= daysInMonth[month-1];
-        month++;
+        total += daysInYear(y);
     }
 
 
-    date.month = month;
-    date.day = remaining;
-    date.monthName = months[month-1];
+    // حساب أيام الأشهر السابقة
+    for(int m = 1; m < month; m++)
+    {
+        total += daysInMonth(year, m);
+    }
 
 
-    return date;
+    // إضافة اليوم الحالي
+    total += day;
 
+
+    return total;
 }

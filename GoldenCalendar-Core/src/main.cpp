@@ -1,41 +1,33 @@
 #include <iostream>
 
-#include "../include/ChronologyEngine.h"
-
+#include "../include/SolarEngine.h"
 
 int main()
 {
 
-    ChronologyEngine engine;
+    std::cout
+    << "1/1/1 = Day "
+    << SolarEngine::toDayId(1,1,1)
+    << "\n";
 
 
-    for(long long i = 1; i <= 35; i++)
-    {
-
-        CalendarDay day =
-            engine.getDay(i);
-
-
-        std::cout
-        << "Day "
-        << day.dayId
-        << " : "
-        << day.weekday
-        << "\n";
+    std::cout
+    << "31/1/1 = Day "
+    << SolarEngine::toDayId(1,1,31)
+    << "\n";
 
 
-        std::cout
-        << "Solar: "
-        << day.solar.day
-        << " "
-        << day.solar.monthName
-        << " "
-        << day.solar.year
-        << "\n\n";
+    std::cout
+    << "1/2/1 = Day "
+    << SolarEngine::toDayId(1,2,1)
+    << "\n";
 
-    }
+
+    std::cout
+    << "1/1/2 = Day "
+    << SolarEngine::toDayId(2,1,1)
+    << "\n";
 
 
     return 0;
-
 }
